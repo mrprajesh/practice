@@ -1,3 +1,8 @@
+# ignore out files 3 level
+*.out
+*/*.out
+*/*/*.out
+
 # Prerequisites
 *.d
 

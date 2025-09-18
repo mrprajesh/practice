@@ -25,18 +25,19 @@ bool isDuplicateInVector(vector<char> v){
 }
 
 bool isValidSudoku(vector<vector<char>>& board) {
+  /*
+   * Step1. Check if rows has duplicates? if so, return false ie INVALID
+   * Step2. Check if cols has duplicates? if so, return false ie INVALID
+   * step3, Check if boxs has duplicates? if so, return false ie INVALID
+   * if no, duplicates, then VALID
+   */ 
+  
   // Check rows.
   for(auto v: board)
     if(isDuplicateInVector(v))
       return false;
   // Check cols
   int SIZE = 9;
-  // for(int i=0;i<SIZE;++i) {
-    // for(int j=0; j<SIZE; ++j) {
-      // printf(" (%2d,%2d)  ",i,j);
-    // }
-    // printf("\n");
-  // }
   vector<char> v;
   for(int i=0;i<SIZE;++i) {
     v.clear();
@@ -57,8 +58,8 @@ bool isValidSudoku(vector<vector<char>>& board) {
     int ibegin = a.first;
     int jbegin = a.second;
     v.clear();
-    for(int i=ibegin*BOXSIZE, iend = ibegin + BOXSIZE; i < iend; ++i){
-      for(int j=jbegin*BOXSIZE, jend = jbegin + BOXSIZE; j < jend; ++j){
+    for(int i=ibegin*BOXSIZE, iend = i + BOXSIZE; i < iend; ++i){
+      for(int j=jbegin*BOXSIZE, jend = j + BOXSIZE; j < jend; ++j){
         v.push_back(board[i][j]);
       }
     }
